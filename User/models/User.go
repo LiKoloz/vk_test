@@ -17,3 +17,8 @@ type User struct {
 	UpdatedAt     time.Time             `json:"updated_at"`
 	DeletedAt     gorm.DeletedAt        `gorm:"index" json:"deleted_at,omitempty"`
 }
+
+type UserDTO struct {
+	Login    string `json:"login"`
+	Password string `json:"password"`
+}
