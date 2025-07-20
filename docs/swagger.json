@@ -1,0 +1,390 @@
+{
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "API for managing announcements and user authentication",
+    "title": "VK Announcements API",
+    "version": "1.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "paths": {
+    "/announcement/create": {
+      "post": {
+        "description": "Add a new announcement to the system",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Announcement"
+        ],
+        "summary": "Create a new announcement",
+        "parameters": [
+          {
+            "description": "Announcement data",
+            "name": "announcement",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.AnnouncementDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.Announcement"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/announcement/get/create_at/desc/{uid}/{page}": {
+      "get": {
+        "description": "Get paginated list of announcements sorted by creation date descending",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Announcement"
+        ],
+        "summary": "Get announcements sorted by creation date (descending)",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "User ID",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Page number",
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Announcement"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/announcement/get/create_at/{uid}/{page}": {
+      "get": {
+        "description": "Get paginated list of announcements sorted by creation date",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Announcement"
+        ],
+        "summary": "Get announcements sorted by creation date (ascending)",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "User ID",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Page number",
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Announcement"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/announcement/get/price/desc/{uid}/{page}": {
+      "get": {
+        "description": "Get paginated list of announcements sorted by price descending",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Announcement"
+        ],
+        "summary": "Get announcements sorted by price (descending)",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "User ID",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Page number",
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Announcement"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/announcement/get/price/{uid}/{page}": {
+      "get": {
+        "description": "Get paginated list of announcements sorted by price",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Announcement"
+        ],
+        "summary": "Get announcements sorted by price (ascending)",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "User ID",
+            "name": "uid",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Page number",
+            "name": "page",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.Announcement"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/user/registration": {
+      "post": {
+        "description": "Create a new user account",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a new user",
+        "parameters": [
+          {
+            "description": "User registration data",
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.UserDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.User"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/user/sign_in/{login}/{password}": {
+      "get": {
+        "description": "Authenticate user and get user details",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "User"
+        ],
+        "summary": "User sign in",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "User login",
+            "name": "login",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "User password",
+            "name": "password",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/models.User"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "models.Announcement": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "image": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "text": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "user_refer": {
+          "type": "integer"
+        }
+      }
+    },
+    "models.AnnouncementDTO": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "text": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "user_refer": {
+          "type": "integer"
+        }
+      }
+    },
+    "models.User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "models.UserDTO": {
+      "type": "object",
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
